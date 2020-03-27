@@ -1,0 +1,72 @@
+ALERTAS
+swal('Oops!', 'No tiene autorización para ingresar nueva data', 'error');
+
+LOGO DE MANUAL
+<a href="#" onclick="window.open('http:ayudas/usuariosNoPropietarios.pdf')" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Manual"><span class="icon-local_library"></span></a>
+
+ICON DEVOLVERSE
+<a href="empleados.php"><span class="icon-menu_open" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Devolverse"></span></a>
+
+CON FAS ASWAR   <i class="fas fa-angle-double-left"></i>
+
+ICON EDITAR <i class="far fa-edit"></i>
+
+
+CONTAR CARACTERES
+var cedul = $("#cedula").val(); //Detectamos los Caracteres del Inp
+    var carCacteres = cedul.length;
+    if (carCacteres>11) {
+        swal('Oops!', 'Ingrese un máximo de 11 caracteres', 'error');
+    } else {
+    
+
+APLICAR CSS
+$('#cedula').css('background', '#006505');
+
+CONTROLAR SI EXISTE UN DATO EN BD
+$('#cedula').on('change',function () {
+    var cedul = $("#cedula").val(); //Detectamos los Caracteres del Inp
+    var carCacteres = cedul.length;
+    if (carCacteres>11) {
+		swal('Oops!', 'Ingrese un máximo de 11 caracteres', 'error');
+		$('#cedula').val('').css('background', '#c9fccc');
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: 'proceso=' + 'Edicion' + '&cedula=' + cedul + '&clave='+ 'pre2',
+            success: function (data) {
+				var datos = eval(data);
+				
+                if(datos!=null){
+			swal('Oops!', 'LA CEDULA SE ENCUENTRA REGISTRADA', 'error');
+			$('#cedula').val('').css('background', '#c9fccc');
+		}   
+		
+		}	 
+        });        
+    }
+});
+
+
+CAMBIAR ORDEN DE COLUMNA DE LA TABLA
+ALTER TABLE tabla
+MODIFY columna_a_mover INT NOT NULL
+AFTER la_columna_que_va_antes
+
+ABRIR REPORTE CONJAVASCRIP Y LINK ENLA TABLA
+
+ <td><a href="javascript:documento(<?php echo $filas['numeDocumento_inv']  ?>)"><?php echo $filas['idinventario'] ?></a></td>
+
+COLOCAR NUMRO CON CEROS A LA IZQUIERDA
+<td align="center" style="background: #cbf8d7"><?php echo str_pad($filas['fechaRetiro_inv'], 7, "0", STR_PAD_LEFT) ?></td>
+
+COLOCAR FECHA A PIE DE PAGINA DEL REPORTE
+ARRIBA COLOCAR  $fecha = date("d-m-Y H:i:s");
+
+ABAJO COLOCAR 
+<div class="fixed letras"> Reporte Emitido el <?php  echo $fecha?></div>
+
+
+PADDING
+TOP  RIGHT  BOTTON   LEFT
